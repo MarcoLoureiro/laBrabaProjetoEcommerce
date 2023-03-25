@@ -1,5 +1,7 @@
 create schema ecommerce926;
 
+set search_path to ecommerce926;
+
 create table produto(
     id serial primary key,
     descricao varchar(1000) not null,
@@ -10,29 +12,12 @@ create table produto(
 alter table produto add constraint 
   uk_produto_codigo_barras unique(codigo_barras);
 
-create table endereco(
-    id serial primary key,
-    cep char(8) not null,
-    logradouro varchar(1000) not null,
-    numero varchar(30) not null,
-    cidade varchar(200) not null,
-    uf char(2) not null
-);
-
-set search_path to ecommerce926;
-
--- DDL - data definition language
-
-create schema ecommerce926;
-
 create table produto(
     id serial primary key,
     descricao varchar(1000) not null,
     codigo_barras varchar(44) not null,
     valor numeric not null
 );
-
--- drop table produto;
 
 alter table produto add constraint 
   uk_produto_codigo_barras unique(codigo_barras);
