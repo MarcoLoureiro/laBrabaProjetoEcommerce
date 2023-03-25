@@ -131,3 +131,8 @@ add column id_cupom integer not null;
 
 alter table item_pedido add constraint fk_item_pedido_cupom foreign key 
 (id_cupom) references cupom(id);
+
+alter table cliente 
+	add column id_carrinho serial;
+
+alter table cliente add constraint fk_cliente_carrinho foreign key (id_carrinho) references carrinho(id);
