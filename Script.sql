@@ -1,7 +1,3 @@
-create schema ecommerce926;
-
-set search_path to ecommerce926;
-
 create table produto(
     id serial primary key,
     descricao varchar(1000) not null,
@@ -12,16 +8,6 @@ create table produto(
 alter table produto add constraint 
   uk_produto_codigo_barras unique(codigo_barras);
 
-create table produto(
-    id serial primary key,
-    descricao varchar(1000) not null,
-    codigo_barras varchar(44) not null,
-    valor numeric not null
-);
-
-alter table produto add constraint 
-  uk_produto_codigo_barras unique(codigo_barras);
- 
 create table endereco(
     id serial,
     cep char(8) not null,
@@ -32,26 +18,33 @@ create table endereco(
     constraint pk_id_endereco primary key(id)
 );
 
+
 create table cliente(
     id serial primary key,
     nome varchar(895) not null,
     id_endereco int
 );
 
+
 alter table cliente 
   add column cpf char(11) unique;
+ 
 
  alter table cliente
-     add UNIQUE(id_endereco); 
+     add UNIQUE(id_endereco);
+    
  
  alter table cliente
-    alter column id_endereco set not null; 
+    alter column id_endereco set not null;
+   
 
  alter table cliente
     alter column cpf set not null; 
+   
 
 alter table cliente
     add foreign key (id_endereco) references endereco(id);
+   
 
 create table pedido (
     id serial primary key,
@@ -63,6 +56,7 @@ create table pedido (
     foreign key(id_cliente) references cliente
 );
 
+
 create table item_pedido(
     id_pedido int not null,
     id_produto int not null,
@@ -71,7 +65,8 @@ create table item_pedido(
     primary key(id_pedido, id_produto),
     foreign key(id_pedido) references pedido(id),
     foreign key(id_produto) references produto
-)
+);
+
 
  -- Alterações feitas para a tarefa 
 create table cupom ( 
@@ -84,7 +79,9 @@ create table cupom (
 	constraint pk_cupom primary key (id)
  );
 
+
 alter table cupom add constraint fk_cupom_cliente foreign key (id_cliente) references cliente(id);
+
 
 create table fornecedor ( 
 	id integer not null,
@@ -96,6 +93,7 @@ create table fornecedor (
 	constraint pk_fornecedor primary key (id),
 	constraint unq_fornecedor_cnpj unique (cnpj) 
  );
+
 
 alter table fornecedor add constraint fk_fornecedor_endereco foreign key (id_endereco) references endereco(id);
 
