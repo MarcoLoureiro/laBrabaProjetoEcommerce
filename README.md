@@ -3,4 +3,4 @@
 
 # Imagem Modelagem 
 
-![Esquema](https://user-images.githubusercontent.com/94862631/227736542-e81d3931-9f66-4545-8eef-8ab76a296f93.png)
+![Esquema3](https://user-images.githubusercontent.com/94862631/227800573-8b42c687-b5f7-426c-8436-515972fc8776.png)
