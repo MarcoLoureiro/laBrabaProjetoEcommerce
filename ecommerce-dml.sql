@@ -90,7 +90,7 @@ insert into pedido values
 	(default,'2023-02-03','Dinheiro','Recebido',1,'2023-02-01',5),
 	(default,'2023-03-02','Cartão','Atrasado',1,'2023-03-01',6);
 
-select * from cliente c
+delete * from cliente c
 left join pedido pe
 on pe.id_cliente  = c.id 
 left join carrinho ca
